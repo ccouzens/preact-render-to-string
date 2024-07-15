@@ -23,8 +23,11 @@ import {
 } from './lib/constants.js';
 
 const EMPTY_ARR = [];
+const EMPTY_OBJ = {};
 const isArray = Array.isArray;
 const assign = Object.assign;
+const BEGIN_SUSPENSE_DENOMINATOR = '<!--$s-->';
+const END_SUSPENSE_DENOMINATOR = '<!--/$s-->';
 
 // Global state for the current render pass
 let beforeDiff, afterDiff, renderHook, ummountHook;
@@ -148,10 +151,6 @@ export async function renderToStringAsync(vnode, context) {
 function markAsDirty() {
 	this.__d = true;
 }
-
-const EMPTY_OBJ = {};
-const BEGIN_SUSPENSE_DENOMINATOR = '<!-- $s -->';
-const END_SUSPENSE_DENOMINATOR = '<!-- /$s -->';
 
 /**
  * @param {VNode} vnode
